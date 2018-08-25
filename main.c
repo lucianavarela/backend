@@ -24,6 +24,3 @@ int main()
 
     return 0;
 }
-
-        printf("\nDesea continuar? 1/0")
-        scanf("%d",&seguir);
