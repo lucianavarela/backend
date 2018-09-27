@@ -7,8 +7,7 @@ class AccesoDatos
     private function __construct()
     {
         try { 
-            $this->objetoPDO = new PDO('mysql:host=localhost;dbname=gametime;charset=utf8', 'root', '', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            //$this->objetoPDO = new PDO('mysql:host=us-cdbr-iron-east-04.cleardb.net;dbname=heroku_bcf733eb5db0982;charset=utf8', 'b6261c21422bec', '2806b3b1', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->objetoPDO = new PDO('mysql:host=us-cdbr-iron-east-01.cleardb.net;dbname=heroku_54d39b9b1e3cab6;charset=utf8', 'b4bc0643d2bd54', 'ee34a90d', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             $this->objetoPDO->exec("SET CHARACTER SET utf8");
             } 
         catch (PDOException $e) { 
