@@ -23,7 +23,7 @@ class MWparaCORS
 		 //solo afecto la salida con los header
 		// $response->getBody()->write('<p>habilitado HabilitarCORSTodos</p>');
    		 return $response
-            ->withHeader('Access-Control-Allow-Origin', '**')
+            ->withHeader('Access-Control-Allow-Origin', 'http://utngametime.herokuapp.com')
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 	}
