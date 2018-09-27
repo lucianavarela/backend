@@ -17,8 +17,8 @@ $config['addContentLengthHeader'] = false;
 
 $app = new \Slim\App(["settings" => $config]);
 
-$app->post('/login/', \login::class . ':UserLogin');
-$app->post('/signup/', \login::class . ':UserSignUp');
+$app->post('/login/', \login::class . ':UserLogin')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
+$app->post('/signup/', \login::class . ':UserSignUp')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 $app->group('/api', function () use ($app) {
   $app->group('/jugador', function () use ($app) {
     $this->get('/', \jugadorApi::class . ':TraerTodos');
