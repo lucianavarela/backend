@@ -34,6 +34,6 @@ $app->group('/api', function () use ($app) {
     $this->delete('/{id}', \resultadoApi::class . ':BorrarUno');
     $this->put('/{id}', \resultadoApi::class . ':ModificarUno');
   });
-})->add(\MWparaAutentificar::class . ':VerificarToken')->add(\MWparaCORS::class . ':HabilitarCORS8080');
+})->add(\MWparaAutentificar::class . ':VerificarToken')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 
 $app->run();
