@@ -23,6 +23,7 @@ class resultadoApi extends Resultado implements IApiUsable
 		$miresultado->juego=$ArrayDeParametros['juego'];
 		$miresultado->nivel=$ArrayDeParametros['nivel'];
 		$miresultado->tiempo=$ArrayDeParametros['tiempo'];
+		var_dump($miresultado);
 		$miresultado->InsertarResultado();
 		$objDelaRespuesta= new stdclass();
 		$objDelaRespuesta->respuesta="Se ha ingresado el resultado";
