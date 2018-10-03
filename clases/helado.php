@@ -57,9 +57,7 @@ class Helado
 
     public function InsertarHelado() {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-        $consulta =$objetoAccesoDato->RetornarConsulta("INSERT
-        into helado (sabor,tipo,kilos,foto)
-        values('$this->sabor','$this->tipo',$this->kilos,'$this->foto')");
+        $consulta =$objetoAccesoDato->RetornarConsulta("INSERT into helado (sabor,tipo,kilos,foto) values('$this->sabor','$this->tipo',$this->kilos,'$this->foto')");
         $consulta->execute();
         return $objetoAccesoDato->RetornarUltimoIdInsertado();
     }
