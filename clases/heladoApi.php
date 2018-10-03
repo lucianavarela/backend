@@ -19,7 +19,7 @@ class heladoApi extends Helado implements IApiUsable
 	public function CargarUno($request, $response, $args) {
 		$ArrayDeParametros = $request->getParsedBody();
 		$mihelado = new Helado();
-		$mihelado->sabor=$request->getAttribute('jugador')->id;
+		$mihelado->sabor=$ArrayDeParametros['sabor'];
 		$mihelado->tipo=$ArrayDeParametros['tipo'];
 		$mihelado->kilos=$ArrayDeParametros['kilos'];
 		$mihelado->foto=$ArrayDeParametros['foto'];
