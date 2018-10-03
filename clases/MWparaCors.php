@@ -16,16 +16,11 @@ class MWparaCORS
    *   ->add(\verificador::class . ':HabilitarCORSTodos')
    */
 	public function HabilitarCORSTodos($request, $response, $next) {
-		/*
-		al ingresar no hago nada
-		*/
-		 $response = $next($request, $response);
-		 //solo afecto la salida con los header
-		// $response->getBody()->write('<p>habilitado HabilitarCORSTodos</p>');
-   		 return $response
-            ->withHeader('Access-Control-Allow-Origin', 'http://utngametime.herokuapp.com')
-            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Accept, Origin, Authorization')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    $response = $next($request, $response);
+    return $response
+      ->withHeader('Access-Control-Allow-Origin', 'http://utnbackend.herokuapp.com')
+      ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+      ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 	}
 	/**
    * @api {any} /HabilitarCORS8080/  HabilitarCORS8080
