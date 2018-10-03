@@ -1,58 +1,58 @@
 <?php
-require_once 'resultado.php';
+require_once 'helado.php';
 require_once 'IApiUsable.php';
-class resultadoApi extends Helado implements IApiUsable
+class heladoApi extends Helado implements IApiUsable
 {
 	public function TraerUno($request, $response, $args) {
 		$id=$args['id'];
-		$resultados_filtrados = Helado::TraerHelado($id);
-		$newResponse = $response->withJson($resultados_filtrados, 200);  
+		$helados_filtrados = Helado::TraerHelado($id);
+		$newResponse = $response->withJson($helados_filtrados, 200);  
 		return $newResponse;
 	}
 
 	public function TraerTodos($request, $response, $args) {
-		$resultados = Helado::TraerHelados();
-		$newResponse = $response->withJson($resultados, 200);  
+		$helados = Helado::TraerHelados();
+		$newResponse = $response->withJson($helados, 200);  
 		return $newResponse;
 	}
 	
 	public function CargarUno($request, $response, $args) {
 		$ArrayDeParametros = $request->getParsedBody();
-		$miresultado = new Helado();
-		$miresultado->sabor=$request->getAttribute('jugador')->id;
-		$miresultado->tipo=$ArrayDeParametros['tipo'];
-		$miresultado->kilos=$ArrayDeParametros['kilos'];
-		$miresultado->foto=$ArrayDeParametros['foto'];
-		$miresultado->InsertarHelado();
+		$mihelado = new Helado();
+		$mihelado->sabor=$request->getAttribute('jugador')->id;
+		$mihelado->tipo=$ArrayDeParametros['tipo'];
+		$mihelado->kilos=$ArrayDeParametros['kilos'];
+		$mihelado->foto=$ArrayDeParametros['foto'];
+		$mihelado->InsertarHelado();
 		$objDelaRespuesta= new stdclass();
-		$objDelaRespuesta->respuesta="Se ha ingresado el resultado";
+		$objDelaRespuesta->respuesta="Se ha ingresado el helado";
 		return $response->withJson($objDelaRespuesta, 200);
 	}
 
 	public function BorrarUno($request, $response, $args) {
 		$id=$args['id'];
-		$resultado= new Helado();
-		$resultado->id=$id;
-		$cantidadDeBorrados=$resultado->BorrarHelado();
+		$helado= new Helado();
+		$helado->id=$id;
+		$cantidadDeBorrados=$helado->BorrarHelado();
 		$objDelaRespuesta= new stdclass();
 		if($cantidadDeBorrados>0) {
 			$objDelaRespuesta->respuesta="Helado eliminado";
 			return $response->withJson($objDelaRespuesta, 200);
 		} else {
-			$objDelaRespuesta->respuesta="Error eliminando el resultado";
+			$objDelaRespuesta->respuesta="Error eliminando el helado";
 			return $response->withJson($objDelaRespuesta, 400);
 		}
 	}
 		
 	public function ModificarUno($request, $response, $args) {
 		$ArrayDeParametros = $request->getParsedBody();
-		$miresultado = new Helado();
-		$miresultado->id = $args['id'];
-		$miresultado->sabor=$ArrayDeParametros['sabor'];
-		$miresultado->tipo=$ArrayDeParametros['tipo'];
-		$miresultado->kilos=$ArrayDeParametros['kilos'];
-		$miresultado->foto=$ArrayDeParametros['foto'];
-		$miresultado->GuardarHelado();
+		$mihelado = new Helado();
+		$mihelado->id = $args['id'];
+		$mihelado->sabor=$ArrayDeParametros['sabor'];
+		$mihelado->tipo=$ArrayDeParametros['tipo'];
+		$mihelado->kilos=$ArrayDeParametros['kilos'];
+		$mihelado->foto=$ArrayDeParametros['foto'];
+		$mihelado->GuardarHelado();
 		$objDelaRespuesta= new stdclass();
 		$objDelaRespuesta->respuesta="Helado cargado";
 		return $response->withJson($objDelaRespuesta, 200);	
