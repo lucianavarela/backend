@@ -12,8 +12,8 @@ require_once './clases/jugador.php';
 require_once './clases/jugadorApi.php';
 require_once './clases/resultado.php';
 require_once './clases/resultadoApi.php';
-require_once './clases/helado.php';
-require_once './clases/heladoApi.php';
+require_once './clases/vehiculo.php';
+require_once './clases/vehiculoApi.php';
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
@@ -36,12 +36,12 @@ $app->group('/api', function () use ($app) {
     $this->delete('/{id}', \resultadoApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
     $this->put('/{id}', \resultadoApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
   });
-  $app->group('/helado', function () use ($app) {
-    $this->get('/', \heladoApi::class . ':TraerTodos');
-    $this->get('/{id}', \heladoApi::class . ':TraerUno');
-    $this->post('/', \heladoApi::class . ':CargarUno');
-    $this->delete('/{id}', \heladoApi::class . ':BorrarUno');
-    $this->put('/{id}', \heladoApi::class . ':ModificarUno');
+  $app->group('/vehiculo', function () use ($app) {
+    $this->get('/', \vehiculoApi::class . ':TraerTodos');
+    $this->get('/{id}', \vehiculoApi::class . ':TraerUno');
+    $this->post('/', \vehiculoApi::class . ':CargarUno');
+    $this->delete('/{id}', \vehiculoApi::class . ':BorrarUno');
+    $this->put('/{id}', \vehiculoApi::class . ':ModificarUno');
   });
 })->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 
