@@ -92,8 +92,7 @@ class Zapato
     public static function TraerZapatos() {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta =$objetoAccesoDato->RetornarConsulta(
-            "SELECT v.id, v.codigo, u.nombre as nombre, v.localVenta, v.genero, v.precioCosto, v.fechaIngreso 
-            FROM zapatos v LEFT JOIN usuarios u on v.nombre = u.id ORDER BY v.fechaIngreso DESC");
+            "SELECT * FROM zapatos");
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_CLASS, "Zapato");
     }
@@ -101,8 +100,7 @@ class Zapato
     public static function TraerZapato($id) {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta =$objetoAccesoDato->RetornarConsulta(
-            "SELECT v.id, v.codigo, u.nombre as nombre, v.localVenta, v.genero, v.precioCosto, v.fechaIngreso 
-            FROM zapatos v LEFT JOIN usuarios u on v.nombre = u.id WHERE v.id = $id DESC");
+            "SELECT * FROM zapatos WHERE v.id = $id DESC");
         $consulta->execute();
         $zapatoResultado= $consulta->fetchObject('Zapato');
         return $zapatoResultado;
