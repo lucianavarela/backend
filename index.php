@@ -12,6 +12,8 @@ require_once './clases/usuario.php';
 require_once './clases/usuarioApi.php';
 require_once './clases/venta.php';
 require_once './clases/ventaApi.php';
+require_once './clases/zapato.php';
+require_once './clases/zapatoApi.php';
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
@@ -33,6 +35,13 @@ $app->group('/api', function () use ($app) {
     $this->post('/', \ventaApi::class . ':CargarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
     $this->delete('/{id}', \ventaApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
     $this->put('/{id}', \ventaApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
+  });
+  $app->group('/zapato', function () use ($app) {
+    $this->get('/', \zapatoApi::class . ':TraerTodos')->add(\MWparaAutentificar::class . ':VerificarToken');
+    $this->get('/{juego}', \zapatoApi::class . ':TraerUno')->add(\MWparaAutentificar::class . ':VerificarToken');
+    $this->post('/', \zapatoApi::class . ':CargarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
+    $this->delete('/{id}', \zapatoApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
+    $this->put('/{id}', \zapatoApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
   });
 })->add(\MWparaAutentificar::class . ':VerificarLogueado');
 
