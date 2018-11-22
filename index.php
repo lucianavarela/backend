@@ -37,11 +37,11 @@ $app->group('/api', function () use ($app) {
     $this->put('/{id}', \ventaApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
   });
   $app->group('/zapato', function () use ($app) {
-    $this->get('/', \zapatoApi::class . ':TraerTodos')->add(\MWparaAutentificar::class . ':VerificarToken');
-    $this->get('/{juego}', \zapatoApi::class . ':TraerUno')->add(\MWparaAutentificar::class . ':VerificarToken');
-    $this->post('/', \zapatoApi::class . ':CargarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
-    $this->delete('/{id}', \zapatoApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
-    $this->put('/{id}', \zapatoApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarToken');
+    $this->get('/', \zapatoApi::class . ':TraerTodos');
+    $this->get('/{juego}', \zapatoApi::class . ':TraerUno');
+    $this->post('/', \zapatoApi::class . ':CargarUno');
+    $this->delete('/{id}', \zapatoApi::class . ':BorrarUno');
+    $this->put('/{id}', \zapatoApi::class . ':ModificarUno');
   });
 })->add(\MWparaAutentificar::class . ':VerificarLogueado');
 
